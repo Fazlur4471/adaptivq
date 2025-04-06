@@ -45,17 +45,17 @@ AdaptivQ is an intelligent, adaptive quiz and mock interview platform designed t
 ## 📸 Screenshots
 
 ### 🔵 Home Page - AI-Powered Interview Practice
-![Home Page](assests/Homepage.jpg)
+![Home Page](Homepage.jpg)
 
 ---
 
 ### 📊 Dashboard - Track Your Progress
-![Dashboard](assests/Dashboard.jpg)
+![Dashboard](Dashboard.jpg)
 
 ---
 
 ### 📚 Categories - Choose Your Practice Domain
-![Categories](assests/Categories.jpg)
+![Categories](Categories.jpg)
 
 ---
 
