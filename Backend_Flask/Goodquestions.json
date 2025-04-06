@@ -1,0 +1,300 @@
+[
+    {
+        "Company":"Amazon",
+        "Catagrory":"DSA",
+        "difficulty":"Easy",
+        "question":"What is a Linear Data Structure? Name a few examples."
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"DSA",
+        "difficulty":"Hard",
+        "question":"What is the difference between file structure and storage structure?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"DSA",
+        "difficulty":"Medium",
+        "question":"What is a multidimensional array?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"DBMS",
+        "difficulty":"Easy",
+        "question":"What is the Amazon database?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"DBMS",
+        "difficulty":"Medium",
+        "question":"What is an Inner Join?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"DBMS",
+        "difficulty":"Hard",
+        "question":"Which is the only constraint that works at the column level?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"OS",
+        "difficulty":"Easy",
+        "question":"What is RAID structure in OS?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"OS",
+        "difficulty":"Medium",
+        "question":"What is a Pipe and when it is used?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"OS",
+        "difficulty":"Hard",
+        "question":"What are the different kinds of operations that are possible on semaphore?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"CN",
+        "difficulty":"Easy",
+        "question":"What is geo-targeting in CloudFront?"
+    },
+    {
+        "Company":"Amazon",
+        "Catagrory":"Aptitutde",
+        "difficulty":"Easy",
+        "question":"a, b, c and d are four numbers in arithmetic progression. The mean of these four numbers is 24. The common difference between the numbers is 4. Find the product of first and last numbers."
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DSA",
+        "difficulty":"Easy",
+        "question":"What is a doubly-linked list? Give some examples."
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DSA",
+        "difficulty":"Medium",
+        "question":"How do you reference all of the elements in a one-dimension array?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DSA",
+        "difficulty":"Hard",
+        "question":"What are dynamic Data Structures? Name a few."
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DBMS",
+        "difficulty":"Easy",
+        "question":"What is a schema in SQL Server?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DBMS",
+        "difficulty":"Medium",
+        "question":"What is dynamic SQL?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"DBMS",
+        "difficulty":"Hard",
+        "question":"What is database replication?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"OS",
+        "difficulty":"Easy",
+        "question":"Explain demand paging?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"OS",
+        "difficulty":"Medium",
+        "question":"What do you mean by RTOS?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"OS",
+        "difficulty":"Hard",
+        "question":"What do you mean by process synchronization?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"CN",
+        "difficulty":"Easy",
+        "question":"What is the use of NIC? Can a computer work without NIC in-network?"
+    },
+    {
+        "Company":"Microsoft",
+        "Catagrory":"Aptitutde",
+        "difficulty":"Easy",
+        "question":"On a particular day, sweets were to be equally distributed among 960 students of a school. However, on that particular day 360 students remained absent, Hence each student present on that day got three sweets extra. Had all 960 students remained present that day, how many sweets would each, student have got?"
+    },
+    {
+        "Company":"Google",
+        "Catagrory":"DSA",
+        "difficulty":"Easy",
+        "question":"What is a stack?"
+    },
+    {
+        "Company":"Google",
+        "Catagrory":"DSA",
+        "difficulty":"Medium",
+        "question":"What are the operations that can be performed on a stack?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"DSA",
+        "difficulty":"Hard",
+        "question":"What is a Dequeue?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"DBMS",
+        "difficulty":"Easy",
+        "question":"What are subqueries in SQL?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"DBMS",
+        "difficulty":"Medium",
+        "question":"What is Query Optimization in SQL?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"DBMS",
+        "difficulty":"Hard",
+        "question":"What are Primary Keys in SQL?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"OS",
+        "difficulty":"Easy",
+        "question":"What is thrashing in OS?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"OS",
+        "difficulty":"Medium",
+        "question":"What is the main objective of multiprogramming?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"OS",
+        "difficulty":"Hard",
+        "question":"What is starvation in OS?"
+    },    {
+        "Company":"Google",
+        "Catagrory":"CN",
+        "difficulty":"Easy",
+        "question":"What is DNS?"
+    },    
+    {
+        "Company":"Google",
+        "Catagrory":"Aptitutde",
+        "difficulty":"Easy",
+        "question":"A sum was put at simple interest at a certain rate for 2 years. Had it been put at 3% higher rate, it would have fetched Rs 300 more. The sum is"
+    },
+    {
+        "Company":"TCS",
+        "Catagrory":"DSA",
+        "difficulty":"Medium",
+        "question":"What is the merge sort? How does it work?"
+    },  
+    {
+        "Company":"TCS",
+        "Catagrory":"DSA",
+        "difficulty":"Hard",
+        "question":"How does the Selection sort work?"
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"DBMS",
+        "difficulty":"Easy",
+        "question":"What are ACID properties of DBMS? "
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"DBMS",
+        "difficulty":"Medium",
+        "question":"What is a tuple in DBMS? "
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"DBMS",
+        "difficulty":"Hard",
+        "question":"What is checkpoint in DBMS? "
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"OS",
+        "difficulty":"Easy",
+        "question":"Basic functions of an OS:"
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"OS",
+        "difficulty":"Medium",
+        "question":"Phases of software development:"
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"OS",
+        "difficulty":"Hard",
+        "question":"Difference between RAM and ROM:"
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"CN",
+        "difficulty":"Easy",
+        "question":"What is a Local Area Network?"
+    },   
+    {
+        "Company":"TCS",
+        "Catagrory":"Aptitutde",
+        "difficulty":"Easy",
+        "question":"it takes 10 3D printers 10 minutes to print 10 models, how long will It take 100 printers to print 100 models? "
+    },  
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DSA",
+        "difficulty":"Easy",
+        "question":"Define the graph Data Structure?"
+    },  
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DSA",
+        "difficulty":"Medium",
+        "question":"What are Binary trees?"
+    },      
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DSA",
+        "difficulty":"Hard",
+        "question":"Do dynamic memory allocations help in managing data? How?"
+    },  
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DBMS",
+        "difficulty":"Easy",
+        "question":"What is DBMS?"
+    },          
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DBMS",
+        "difficulty":"Medium",
+        "question":"Difference between DBMS and RDBMS?"
+    },          
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"DBMS",
+        "difficulty":"Hard",
+        "question":"What is normalization?"
+    },
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"OS",
+        "difficulty":"Easy",
+        "question":"What is the key distinction between reading from files and reading from buffers?"
+    },   
+    {
+        "Company":"JP Morgan",
+        "Catagrory":"OS",
+        "difficulty":"Medium",
+        "question":"What is Context Switching?"
+    }
+]

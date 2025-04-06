@@ -1,0 +1,208 @@
+{
+    "interview_questions": [
+      {
+        "question": "What is a Linear Data Structure? Name a few examples.",
+        "answer": "A data structure is linear if all its elements or data items are arranged in a sequence or a linear order. The elements are stored in a non-hierarchical way so that each item has successors and predecessors except the first and last element in the list. Examples of linear data structures are Arrays, Stack, Strings, Queue, and Linked List."
+      },
+      {
+        "question": "What is the difference between file structure and storage structure?",
+        "answer": "The difference lies in the memory area accessed. Storage structure refers to the data structure in the memory of the computer system, whereas file structure represents the storage structure in the auxiliary memory."
+      },
+      {
+        "question": "What is a multidimensional array?",
+        "answer": "A multidimensional array is a multidimensional array with more than one dimension. It is an array of arrays or an array with numerous layers. The 2D array, or two-dimensional array, is the most basic multidimensional array."
+      },
+      {
+        "question": "What is the Amazon database?",
+        "answer": "Amazon database is one of the Amazon Web Services, which is a fully managed petabyte-scale data warehouse service. There are various Amazon Database Services available, such as DynamoDB, RDS, ElastiCache, and RedShift."
+      },
+      {
+        "question": "What is an Inner Join?",
+        "answer": "Inner join is the default join, which is used when no join is specified. INNER JOIN in SQL Inner Join returns the matched rows from both tables. It is the join operation that gets only those rows that satisfy the joins condition and discards the rows that do not match."
+      },
+      {
+        "question": "Which is the only constraint that works at the column level?",
+        "answer": "The only constraint that works at the column level is NOT NULL.  A column cannot have a NULL (empty) value with this constraint, and this would be an important thing if the field always contains some data, like a primary key or mandatory fields like your e-mail or username."
+      },
+      {
+        "question": "What is RAID structure in OS?",
+        "answer": "RAID (Redundant Arrays of Independent Disks) is a method used to store data on Multiple hard disks therefore it is considered as data storage virtualization technology that combines multiple hard disks. It simply balances data protection, system performance, storage space, etc. It is used to improve the overall performance and reliability of data storage."
+      },
+      {
+        "question": "What is a Pipe and when it is used?",
+        "answer": "The pipe is generally a connection among two or more processes that are interrelated to each other. It is a mechanism that is used for inter-process communication using message passing.  One can easily send information such as the output of one program process to another program process using a pipe. It can be used when two processes want to communicate one-way i.e., inter-process communication (IPC)."
+      },
+      {
+        "question": "What are the different kinds of operations that are possible on semaphore?",
+        "answer": "There are basically two atomic operations that are possible:\nWait()\nSignal()"
+      },
+      {
+        "question": "What is geo-targeting in CloudFront?",
+        "answer": "Geo-Targeting is a concept where businesses can show personalized content to their audience based on their geographic location without changing the URL. This helps you create customized content for the audience of a specific geographical area, keeping their needs in the forefront."
+      },
+      {
+        "question": "a, b, c and d are four numbers in arithmetic progression. The mean of these four numbers is 24. The common difference between the numbers is 4. Find the product of first and last numbers.",
+        "answer": "540"
+      },
+      {
+        "question": "What is a doubly-linked list? Give some examples.",
+        "answer": "It is a complex type (double-ended LL) of a linked list in which a node has two links, one that connects to the next node in the sequence and another that connects to the previous node. This allows traversal across the data elements in both directions.\nExamples include:\nA music playlist with next and previous navigation buttons\nThe browser cache with BACK-FORWARD visited pages\nThe undo and redo functionality on a browser, where you can reverse the node to get to the previous page"
+      },
+      {
+        "question": "How do you reference all of the elements in a one-dimension array?",
+        "answer": "Using an indexed loop, we may access all of the elements in a one-dimensional array. The counter counts down from 0 to the maximum array size, n, minus one. The loop counter is used as the array subscript to refer to all items of the one-dimensional array in succession."
+      },
+      {
+        "question": "What are dynamic Data Structures? Name a few.",
+        "answer": "They are collections of data in memory that expand and contract to grow or shrink in size as a program runs. This enables the programmer to control exactly how much memory is to be utilized.\nExamples are the dynamic array, linked list, stack, queue, and heap."
+      },
+      {
+        "question": "What is a schema in SQL Server?",
+        "answer": "A container for database objects like tables and views."
+      },
+      {
+        "question": "What is dynamic SQL?",
+        "answer": "SQL statements constructed and executed at runtime."
+      },
+      {
+        "question": "What is database replication?",
+        "answer": "Copying and synchronizing data across databases for redundancy and availability."
+      },
+      {
+        "question": "Explain demand paging?",
+        "answer": "Demand paging is a method that loads pages into memory on demand. This method is mostly used in virtual memory. In this, a page is only brought into memory when a location on that particular page is referenced during execution."
+      },
+      {
+        "question": "What do you mean by RTOS?",
+        "answer": "Real Time Operating System (RTOS) is an operating system that is used for real-time applications i.e., for those applications where data processing should be done in a fixed and small measure of time. It performs much better on tasks that are needed to be executed within a short time."
+      },
+      {
+        "question": "What do you mean by process synchronization?",
+        "answer": "Process synchronization is basically a way to coordinate processes that use shared resources or data. It is very much essential to ensure synchronized execution of cooperating processes so that will maintain data consistency."
+      },
+      {
+        "question": "What is the use of NIC? Can a computer work without NIC in-network?",
+        "answer": "NIC stands for Network Interface Card. NIC is the bridge between computer and network.\nWithout NIC Card, the computer cannot connect to any network. It can also be called an Ethernet card or Network Adaptor."
+      },
+      {
+        "question": "On a particular day, sweets were to be equally distributed among 960 students of a school. However, on that particular day 360 students remained absent, Hence each student present on that day got three sweets extra. Had all 960 students remained present that day, how many sweets would each, student have got?",
+        "answer": "5"
+      },
+      {
+        "question": "What is a stack?",
+        "answer": "The next one in the list of DSA interview questions is one about stack. A stack is an abstract data type that specifies a linear data structure, as in a real physical stack or piles where you can only take the top item off the stack in order to remove things."
+      },
+      {
+        "question": "What are the operations that can be performed on a stack?",
+        "answer": "A stack is a linear data structure that operates on the same concept, in that components in a stack are added and deleted only from one end, referred to as the TOP. As a result, a stack is known as a LIFO (Last-In-First-Out) data structure because the piece that was put last is the first to be removed.\nPUSH, POP, PEEK"
+      },
+      {
+        "question": "What is a Dequeue?",
+        "answer": "Dequeue is a double-ended queue, or a data structure, where the elements can be inserted or deleted at both ends (FRONT and REAR)."
+      },
+      {
+        "question": "What are subqueries in SQL?",
+        "answer": "Subqueries in SQL are queries that are nested within any of the four major SQL statements – SELECT, DELETE, INSERT and UPDATE. Any query nested within a subquery is also considered a subquery in SQL."
+      },
+      {
+        "question": "What is Query Optimization in SQL?",
+        "answer": "Query optimization is the process of choosing the right SQL statements while writing queries to enable quicker outputs and improve system performance."
+      },
+      {
+        "question": "What are Primary Keys in SQL?",
+        "answer": "Primary keys in SQL are used to identify records in a table. A primary key can be a column or a group of columns that uniquely identify each row in a table. It is important that database tables have primary keys to identify unique table values."
+      },
+      {
+        "question": "What is thrashing in OS?",
+        "answer": "Thrashing in OS refers to a situation where the system spends a majority of its time swapping pages in and out of memory rather than executing processes. It occurs when there is insufficient memory and too many processes compete for limited resources, leading to severe performance degradation."
+      },
+      {
+        "question": "What is the main objective of multiprogramming?",
+        "answer": "The main objective of multiprogramming is to maximize CPU utilization by organizing jobs so that the CPU always has one to execute. It increases efficiency by overlapping the I/O time of one job with the CPU time of another."
+      },
+      {
+        "question": "What is starvation in OS?",
+        "answer": "Starvation in OS occurs when a process waits indefinitely to get access to a resource because other higher priority processes are constantly granted access before it. It is often a result of poor scheduling policies."
+      },
+      {
+        "question": "What is DNS?",
+        "answer": "DNS (Domain Name System) is a system that translates human-readable domain names (like www.example.com) into IP addresses that computers use to identify each other on the network."
+      },
+      {
+        "question": "A sum was put at simple interest at a certain rate for 2 years. Had it been put at 3% higher rate, it would have fetched Rs 300 more. The sum is",
+        "answer": "5000"
+      },
+      {
+        "question": "What is the merge sort? How does it work?",
+        "answer": "Merge sort is a divide-and-conquer sorting algorithm. It divides the array into halves, recursively sorts them, and then merges the sorted halves to produce the final sorted array."
+      },
+      {
+        "question": "How does the Selection sort work?",
+        "answer": "Selection sort works by repeatedly finding the minimum element from the unsorted part of the list and putting it at the beginning. It continues this process until the entire array is sorted."
+      },
+      {
+        "question": "What are ACID properties of DBMS?",
+        "answer": "ACID stands for Atomicity, Consistency, Isolation, and Durability. These properties ensure reliable processing of database transactions by guaranteeing that transactions are processed reliably and maintain the integrity of the database."
+      },
+      {
+        "question": "What is a tuple in DBMS?",
+        "answer": "A tuple in DBMS refers to a single row in a table, which represents a single record of data. Each tuple contains values for the attributes defined in the table's schema."
+      },
+      {
+        "question": "What is checkpoint in DBMS?",
+        "answer": "A checkpoint in DBMS is a mechanism used to reduce the amount of work needed during recovery. It saves the current state of the database and all committed transactions, allowing the system to recover more efficiently in case of a crash."
+      },
+      {
+        "question": "Basic functions of an OS:",
+        "answer": "The basic functions of an OS include process management, memory management, file system management, device management, and providing a user interface."
+      },
+      {
+        "question": "Phases of software development:",
+        "answer": "The phases of software development are: Requirement Analysis, Design, Implementation (Coding), Testing, Deployment, and Maintenance."
+      },
+      {
+        "question": "Difference between RAM and ROM:",
+        "answer": "RAM is volatile memory used for temporary storage while a computer is running. ROM is non-volatile memory that stores permanent data, like the system’s firmware."
+      },
+      {
+        "question": "What is a Local Area Network?",
+        "answer": "A Local Area Network (LAN) is a network that connects computers within a limited area such as a home, school, or office building, allowing them to share resources and information."
+      },
+      {
+        "question": "It takes 10 3D printers 10 minutes to print 10 models, how long will it take 100 printers to print 100 models?",
+        "answer": "10"
+      },
+      {
+        "question": "Define the graph Data Structure?",
+        "answer": "A graph is a data structure consisting of a set of nodes (vertices) connected by edges. It can be used to represent networks like social connections, maps, or web pages."
+      },
+      {
+        "question": "What are Binary trees?",
+        "answer": "A binary tree is a tree data structure in which each node has at most two children referred to as the left child and the right child. It is used in searching and sorting algorithms."
+      },
+      {
+        "question": "Do dynamic memory allocations help in managing data? How?",
+        "answer": "Yes, dynamic memory allocation helps in efficient data management by allocating memory during runtime as needed, reducing waste and allowing programs to handle variable data sizes."
+      },
+      {
+        "question": "What is DBMS?",
+        "answer": "DBMS (Database Management System) is software that allows users to define, create, maintain, and control access to databases. It provides tools for data storage, querying, and management."
+      },
+      {
+        "question": "Difference between DBMS and RDBMS?",
+        "answer": "DBMS stores data as files, while RDBMS stores data in tabular form with relationships. RDBMS follows relational integrity and supports ACID properties, unlike traditional DBMS."
+      },
+      {
+        "question": "What is normalization?",
+        "answer": "Normalization is the process of organizing data in a database to reduce redundancy and improve data integrity by dividing large tables into smaller, related tables."
+      },
+      {
+        "question": "What is the key distinction between reading from files and reading from buffers?",
+        "answer": "Reading from files involves accessing data stored on disk, which is slower, while reading from buffers involves accessing data in memory, which is faster. Buffers are often used to temporarily store data being transferred."
+      },
+      {
+        "question": "What is Context Switching?",
+        "answer": "Context switching is the process of storing and restoring the state of a CPU so that execution can be resumed from the same point later. It allows multitasking by enabling the CPU to switch between processes."
+      }
+    ]
+}
