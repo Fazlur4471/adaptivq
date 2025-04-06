@@ -38,7 +38,7 @@ AdaptivQ is an intelligent, adaptive quiz and mock interview platform designed t
 | ML & GenAI   | Python, TensorFlow, PyTorch, Gemini API, RAG Sheet Integration    |
 | Scraping     | Selenium, BeautifulSoup, Playwright, Firecrawl                    |
 | Auth & DB    | Firebase Auth, PostgreSQL, Redis                                  |
-| Infra        | Docker, Vercel Hosting, GitHub Actions (CI/CD)                   |
+| Infra        | Docker, Vercel Hosting, GitHub Actions (CI/CD)                    |
 
 ---
 
@@ -76,13 +76,3 @@ AdaptivQ is an intelligent, adaptive quiz and mock interview platform designed t
 - Resume scoring and job-matching suggestions
 
 ---
-
-## 🙌 Contribute
-
-PRs are welcome. Help us build the smartest interview-prep platform on the internet!
-
----
-
-## 📬 Contact
-
-For queries or demo requests: `hello@adaptivq.ai`
