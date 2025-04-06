@@ -1,59 +1,88 @@
-# 🚀 AdaptivQ 🎯  
+# AdaptivQ 🎯  
 **AI-Powered Adaptive Mock Interview Platform**
 
-AdaptivQ is an intelligent, adaptive mock interview and quiz platform powered by Gen AI. It dynamically personalizes questions and feedback in real-time using machine learning and Retrieval-Augmented Generation (RAG), making it a smart tool for students, educators, and ed-tech platforms looking to boost learning outcomes through AI.
+AdaptivQ is an intelligent, adaptive quiz and mock interview platform designed to deliver personalized assessments in real-time. It leverages GenAI, RAG techniques, and machine learning to tailor questions based on a user’s performance, knowledge profile, and learning pace — making it perfect for students, educators, and ed-tech platforms.
 
 ---
 
-## ✨ Features
+## 🚀 Features
 
-- 🎯 **Adaptive Questioning** – Dynamically adjusts question difficulty based on user performance and confidence levels.
-- 🧠 **Knowledge Profiling** – Tracks accuracy, hesitation time, and self-rated confidence to build a real-time skill map.
-- 📈 **Performance Analytics** – Visual dashboards show trends, improvements, and weak zones for continuous growth.
-- 🔁 **Spaced Repetition System** – Automatically reintroduces previously incorrect or hesitant questions using SRS techniques.
-- 🤖 **Gen AI Integration** – Uses Gemini API for real-time question generation, contextual explanations, and answer evaluations.
-- 🧾 **RAG Sheets** – Integrated Retrieval-Augmented Generation using custom knowledge bases and sheets to personalize question flow.
-- 🌐 **Web Scraping** – Selenium and BeautifulSoup power live content enrichment and dynamic question generation from verified sources.
-- 🎮 **Gamified Experience (Upcoming)** – Badges, leaderboards, and adaptive timers to increase engagement and challenge.
+- 🎯 **Adaptive Questioning** – Dynamic adjustment of quiz difficulty based on user performance.
+- 🧠 **Knowledge Profiling** – Tracks correctness, hesitation time, and confidence to estimate skill level.
+- 🧾 **RAG-Based Interview Sessions** – Leveraging Gemini APIs with custom sheets and prompt templates for retrieval-augmented question generation and evaluation.
+- 🧪 **GenAI Evaluation** – Answers are evaluated in real-time using Gemini’s LLM APIs for semantic understanding and scoring.
+- 📈 **Performance Analytics** – Visualize improvement areas, mastery levels, and track real-time performance.
+- 🔄 **Spaced Repetition System** – Reinforces learning using scientifically backed repetition schedules.
+- 🎮 **Gamified Experience (Upcoming)** – Leaderboards, badges, adaptive timers for engagement.
 
 ---
 
 ## 🧩 Architecture Overview
 
-- **Client Layer**: React.js + Material UI for responsive UI
-- **Application Layer**: Node.js + Express.js as the API gateway
-- **ML/AI Layer**:
-  - Python + TensorFlow/PyTorch for model training and real-time predictions
-  - Google Gemini API for question generation, scoring, and explanation
-  - RAG architecture for enhanced contextual responses
-- **Scraping & Enrichment**:
-  - **Selenium** and **BeautifulSoup** for dynamic web scraping
-  - **Firecrawl** for intelligent crawling and content enrichment
-- **Background Processing**: Celery workers handle async tasks (model training, analytics sync, content fetch)
-- **Evaluation Engine**: Gen AI-backed feedback using Gemini models based on student inputs and answer quality
+- **Client Layer**: React.js + Tailwind + Material UI
+- **Application Layer**: Node.js + Express API Gateway
+- **ML Layer**: Python (TensorFlow, PyTorch) + Gemini API integration for GenAI
+- **Scraping Engine**: Selenium + BeautifulSoup + Firecrawl for question curation
+- **RAG Support**: Custom Gemini Prompt + Structured Google Sheet RAG layer
+- **Background Tasks**: Celery + Redis workers for async model evaluation & feedback
+- **Database**: PostgreSQL, Redis Cache, Firebase (Auth & File Storage)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Layer             | Tools Used                                                                 |
-|------------------|------------------------------------------------------------------------------|
-| **Frontend**      | React, TypeScript, Tailwind CSS, Vite                                       |
-| **Backend**       | Node.js, Express.js, RESTful APIs                                           |
-| **ML & AI**       | Python, TensorFlow, PyTorch, Google Gemini API, Firecrawl, RAG, Gen AI     |
-| **Scraping**      | Selenium, BeautifulSoup, Playwright                                         |
-| **Database**      | PostgreSQL, Redis, Firebase (Auth & Storage), Flask                         |
-| **Infrastructure**| Docker, Vercel (Hosting), GitHub Actions (CI/CD), RAG knowledge base sheets |
+| Layer         | Tools Used                                                       |
+|--------------|-------------------------------------------------------------------|
+| Frontend     | React, TypeScript, Tailwind CSS, Vite                             |
+| Backend      | Node.js, Express.js, REST APIs                                    |
+| ML & GenAI   | Python, TensorFlow, PyTorch, Gemini API, RAG Sheet Integration    |
+| Scraping     | Selenium, BeautifulSoup, Playwright, Firecrawl                    |
+| Auth & DB    | Firebase Auth, PostgreSQL, Redis                                  |
+| Infra        | Docker, Vercel Hosting, GitHub Actions (CI/CD)                   |
 
 ---
 
-## 💡 What's Next?
+## 📸 Screenshots
 
-- 🧠 GPT-4 and Gemini Pro hybrid AI mode for richer adaptive logic  
-- 🎯 Deeper integration with external LMS platforms  
-- 📚 Smart content recommendation based on user strengths  
-- 🧪 A/B testing and experiment dashboard for AI evaluations  
+### 🔵 Home Page - AI-Powered Interview Practice
+![Home Page](assests/Homepage.jpg)
 
 ---
 
+### 📊 Dashboard - Track Your Progress
+![Dashboard](assests/Dashboard.jpg)
 
+---
+
+### 📚 Categories - Choose Your Practice Domain
+![Categories](assests/Categories.jpg)
+
+---
+
+## ⚙️ How It Works
+
+1. Select a category from the dashboard
+2. Questions adapt based on your responses and time taken
+3. GenAI evaluates your responses in real-time
+4. Your performance is tracked and analyzed visually
+5. Weak areas are reinforced with RAG-powered spaced repetition
+
+---
+
+## 💡 Upcoming
+
+- Full voice-based interview simulation
+- Peer leaderboard and group competitions
+- Resume scoring and job-matching suggestions
+
+---
+
+## 🙌 Contribute
+
+PRs are welcome. Help us build the smartest interview-prep platform on the internet!
+
+---
+
+## 📬 Contact
+
+For queries or demo requests: `hello@adaptivq.ai`
