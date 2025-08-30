@@ -17,3 +17,7 @@ lerna-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Environment files
+.env
+.env.local
