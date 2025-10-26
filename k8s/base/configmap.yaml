@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: adaptivq-config
+  namespace: adaptivq
+data:
+  FLASK_ENV: "production"
+  DATABASE_HOST: "postgres-service"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "adaptivq"
+  REDIS_HOST: "redis-service"
+  REDIS_PORT: "6379"
+  CELERY_BROKER_URL: "redis://redis-service:6379/1"
+  CELERY_RESULT_BACKEND: "redis://redis-service:6379/2"

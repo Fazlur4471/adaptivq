@@ -1,0 +1,89 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: celery-worker
+  namespace: adaptivq
+  labels:
+    app: celery-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: celery-worker
+  template:
+    metadata:
+      labels:
+        app: celery-worker
+    spec:
+      containers:
+      - name: celery-worker
+        image: adaptivq-backend:latest
+        imagePullPolicy: Always
+        command: ["celery", "-A", "Integration.celery", "worker", "--loglevel=info", "--concurrency=4"]
+        env:
+        - name: DATABASE_URL
+          value: "postgresql://$(POSTGRES_USER):$(POSTGRES_PASSWORD)@$(DATABASE_HOST):$(DATABASE_PORT)/$(DATABASE_NAME)"
+        - name: REDIS_URL
+          value: "redis://:$(REDIS_PASSWORD)@$(REDIS_HOST):$(REDIS_PORT)/0"
+        - name: CELERY_BROKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: CELERY_BROKER_URL
+        - name: CELERY_RESULT_BACKEND
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: CELERY_RESULT_BACKEND
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: adaptivq-secrets
+              key: POSTGRES_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: adaptivq-secrets
+              key: POSTGRES_PASSWORD
+        - name: REDIS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: adaptivq-secrets
+              key: REDIS_PASSWORD
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: adaptivq-secrets
+              key: GEMINI_API_KEY
+        - name: DATABASE_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: DATABASE_HOST
+        - name: DATABASE_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: DATABASE_PORT
+        - name: DATABASE_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: DATABASE_NAME
+        - name: REDIS_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: REDIS_HOST
+        - name: REDIS_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: adaptivq-config
+              key: REDIS_PORT
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"

@@ -1,0 +1,131 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  postgres:
+    image: postgres:15-alpine
+    container_name: adaptivq-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-adaptivq}
+      POSTGRES_USER: ${POSTGRES_USER:-adaptivq_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-adaptivq_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - adaptivq-network
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    container_name: adaptivq-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}
+    volumes:
+      - redis_data:/data
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - adaptivq-network
+
+  # Flask Backend
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: adaptivq-backend
+    environment:
+      FLASK_APP: Integration.py
+      FLASK_ENV: ${FLASK_ENV:-development}
+      DATABASE_URL: postgresql://${POSTGRES_USER:-adaptivq_user}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-adaptivq}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/0
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/2
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+      FIREBASE_CREDENTIALS: ${FIREBASE_CREDENTIALS}
+    volumes:
+      - ./Backend_Flask:/app
+    ports:
+      - "5000:5000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    networks:
+      - adaptivq-network
+    restart: unless-stopped
+
+  # Celery Worker
+  celery-worker:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: adaptivq-celery-worker
+    command: celery -A Integration.celery worker --loglevel=info --concurrency=4
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-adaptivq_user}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-adaptivq}
+      REDIS_URL: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/0
+      CELERY_BROKER_URL: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/1
+      CELERY_RESULT_BACKEND: redis://:${REDIS_PASSWORD:-changeme}@redis:6379/2
+      GEMINI_API_KEY: ${GEMINI_API_KEY}
+    volumes:
+      - ./Backend_Flask:/app
+    depends_on:
+      - redis
+      - postgres
+    networks:
+      - adaptivq-network
+    restart: unless-stopped
+
+  # React Frontend
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: adaptivq-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - adaptivq-network
+    restart: unless-stopped
+
+  # Nginx Reverse Proxy (Optional - for production-like setup)
+  nginx:
+    image: nginx:alpine
+    container_name: adaptivq-nginx
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+    ports:
+      - "443:443"
+      - "8080:80"
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - adaptivq-network
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  adaptivq-network:
+    driver: bridge

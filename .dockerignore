@@ -1,0 +1,58 @@
+# Node modules
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Build outputs
+dist
+build
+*.egg-info
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs
+
+# Testing
+coverage
+.nyc_output
+
+# Documentation
+*.md
+!README.md
+
+# Images (keep them out of build context for faster builds)
+*.jpg
+*.jpeg
+*.png
+*.gif

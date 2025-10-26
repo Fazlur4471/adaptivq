@@ -1,0 +1,112 @@
+---
+- name: Deploy AdaptivQ to Kubernetes
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev', true) }}"
+    image_tag: "{{ lookup('env', 'IMAGE_TAG') | default('latest', true) }}"
+    aws_region: "{{ lookup('env', 'AWS_REGION') | default('us-east-1', true) }}"
+    eks_cluster_name: "{{ project_name }}-{{ environment }}"
+    
+  tasks:
+    - name: Display deployment information
+      debug:
+        msg: "Deploying AdaptivQ {{ image_tag }} to {{ environment }} environment"
+    
+    - name: Configure kubectl for EKS
+      shell: |
+        aws eks update-kubeconfig \
+          --region {{ aws_region }} \
+          --name {{ eks_cluster_name }}
+      changed_when: false
+    
+    - name: Create namespace if not exists
+      kubernetes.core.k8s:
+        state: present
+        definition:
+          apiVersion: v1
+          kind: Namespace
+          metadata:
+            name: adaptivq
+    
+    - name: Apply Kubernetes configurations
+      kubernetes.core.k8s:
+        state: present
+        src: "{{ item }}"
+        namespace: adaptivq
+      loop:
+        - ../../k8s/base/configmap.yaml
+        - ../../k8s/base/secrets.yaml
+        - ../../k8s/base/postgres-statefulset.yaml
+        - ../../k8s/base/redis-statefulset.yaml
+        - ../../k8s/base/backend-deployment.yaml
+        - ../../k8s/base/celery-deployment.yaml
+        - ../../k8s/base/frontend-deployment.yaml
+        - ../../k8s/base/ingress.yaml
+        - ../../k8s/base/hpa.yaml
+    
+    - name: Update backend deployment image
+      kubernetes.core.k8s:
+        state: present
+        namespace: adaptivq
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: backend
+          spec:
+            template:
+              spec:
+                containers:
+                - name: backend
+                  image: "{{ ecr_backend_url }}:{{ image_tag }}"
+    
+    - name: Update frontend deployment image
+      kubernetes.core.k8s:
+        state: present
+        namespace: adaptivq
+        definition:
+          apiVersion: apps/v1
+          kind: Deployment
+          metadata:
+            name: frontend
+          spec:
+            template:
+              spec:
+                containers:
+                - name: frontend
+                  image: "{{ ecr_frontend_url }}:{{ image_tag }}"
+    
+    - name: Wait for backend deployment rollout
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: adaptivq
+        name: backend
+        wait: yes
+        wait_condition:
+          type: Progressing
+          status: "True"
+        wait_timeout: 300
+    
+    - name: Wait for frontend deployment rollout
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: adaptivq
+        name: frontend
+        wait: yes
+        wait_condition:
+          type: Progressing
+          status: "True"
+        wait_timeout: 300
+    
+    - name: Get deployment status
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: adaptivq
+      register: deployments
+    
+    - name: Display deployment status
+      debug:
+        msg: "{{ item.metadata.name }}: {{ item.status.availableReplicas | default(0) }}/{{ item.spec.replicas }} replicas available"
+      loop: "{{ deployments.resources }}"
