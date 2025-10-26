@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  # Development frontend with hot reload
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      target: development
+    container_name: adaptivq-frontend-dev
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./index.html:/app/index.html
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - VITE_API_URL=http://localhost:5000
+    ports:
+      - "5173:5173"
+    command: npm run dev -- --host 0.0.0.0
+    networks:
+      - adaptivq-network
+
+  # Development backend with auto-reload
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: adaptivq-backend-dev
+    volumes:
+      - ./Backend_Flask:/app
+    environment:
+      FLASK_ENV: development
+      FLASK_DEBUG: 1
+    command: flask run --host=0.0.0.0 --port=5000 --reload
+    ports:
+      - "5000:5000"
+    networks:
+      - adaptivq-network
+
+networks:
+  adaptivq-network:
+    driver: bridge

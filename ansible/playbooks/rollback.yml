@@ -1,0 +1,71 @@
+---
+- name: Rollback AdaptivQ Deployment
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev', true) }}"
+    rollback_revision: "{{ lookup('env', 'ROLLBACK_REVISION') | default('0', true) }}"
+    aws_region: "{{ lookup('env', 'AWS_REGION') | default('us-east-1', true) }}"
+    eks_cluster_name: "{{ project_name }}-{{ environment }}"
+    
+  tasks:
+    - name: Display rollback information
+      debug:
+        msg: "Rolling back AdaptivQ in {{ environment }} environment to revision {{ rollback_revision }}"
+    
+    - name: Configure kubectl for EKS
+      shell: |
+        aws eks update-kubeconfig \
+          --region {{ aws_region }} \
+          --name {{ eks_cluster_name }}
+      changed_when: false
+    
+    - name: Rollback backend deployment
+      kubernetes.core.k8s_rollback:
+        kind: Deployment
+        name: backend
+        namespace: adaptivq
+        revision: "{{ rollback_revision | int }}"
+      when: rollback_revision | int > 0
+    
+    - name: Rollback backend to previous version
+      command: kubectl rollout undo deployment/backend -n adaptivq
+      when: rollback_revision | int == 0
+    
+    - name: Rollback frontend deployment
+      kubernetes.core.k8s_rollback:
+        kind: Deployment
+        name: frontend
+        namespace: adaptivq
+        revision: "{{ rollback_revision | int }}"
+      when: rollback_revision | int > 0
+    
+    - name: Rollback frontend to previous version
+      command: kubectl rollout undo deployment/frontend -n adaptivq
+      when: rollback_revision | int == 0
+    
+    - name: Wait for rollback to complete
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: adaptivq
+        name: "{{ item }}"
+        wait: yes
+        wait_condition:
+          type: Progressing
+          status: "True"
+        wait_timeout: 300
+      loop:
+        - backend
+        - frontend
+    
+    - name: Verify rollback status
+      kubernetes.core.k8s_info:
+        kind: Deployment
+        namespace: adaptivq
+      register: deployments
+    
+    - name: Display rollback status
+      debug:
+        msg: "{{ item.metadata.name }}: Rollback completed - {{ item.status.availableReplicas | default(0) }}/{{ item.spec.replicas }} replicas available"
+      loop: "{{ deployments.resources }}"

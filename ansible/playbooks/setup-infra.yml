@@ -1,0 +1,84 @@
+---
+- name: Setup AWS Infrastructure for AdaptivQ
+  hosts: localhost
+  gather_facts: false
+  
+  vars:
+    environment: "{{ lookup('env', 'ENVIRONMENT') | default('dev', true) }}"
+    terraform_dir: "../../terraform"
+    
+  tasks:
+    - name: Display setup information
+      debug:
+        msg: "Setting up infrastructure for {{ environment }} environment"
+    
+    - name: Check if Terraform is installed
+      command: terraform version
+      register: terraform_check
+      changed_when: false
+      failed_when: false
+    
+    - name: Fail if Terraform is not installed
+      fail:
+        msg: "Terraform is not installed. Please install Terraform first."
+      when: terraform_check.rc != 0
+    
+    - name: Initialize Terraform
+      terraform:
+        project_path: "{{ terraform_dir }}"
+        state: present
+        force_init: true
+      register: terraform_init
+    
+    - name: Validate Terraform configuration
+      command: terraform validate
+      args:
+        chdir: "{{ terraform_dir }}"
+      changed_when: false
+    
+    - name: Plan Terraform changes
+      terraform:
+        project_path: "{{ terraform_dir }}"
+        state: planned
+        plan_file: "tfplan-{{ environment }}"
+        variables_file: "environments/{{ environment }}/terraform.tfvars"
+      register: terraform_plan
+    
+    - name: Display Terraform plan
+      debug:
+        var: terraform_plan
+    
+    - name: Confirm before applying
+      pause:
+        prompt: "Do you want to apply these changes? (yes/no)"
+      register: confirm
+      when: not ansible_check_mode
+    
+    - name: Apply Terraform changes
+      terraform:
+        project_path: "{{ terraform_dir }}"
+        state: present
+        plan_file: "tfplan-{{ environment }}"
+      when: 
+        - not ansible_check_mode
+        - confirm.user_input | default('no') | lower == 'yes'
+      register: terraform_apply
+    
+    - name: Display Terraform outputs
+      command: terraform output -json
+      args:
+        chdir: "{{ terraform_dir }}"
+      register: terraform_outputs
+      changed_when: false
+    
+    - name: Parse Terraform outputs
+      set_fact:
+        tf_outputs: "{{ terraform_outputs.stdout | from_json }}"
+    
+    - name: Display important outputs
+      debug:
+        msg: 
+          - "EKS Cluster: {{ tf_outputs.eks_cluster_name.value }}"
+          - "RDS Endpoint: {{ tf_outputs.rds_endpoint.value }}"
+          - "Redis Endpoint: {{ tf_outputs.redis_endpoint.value }}"
+          - "ECR Repositories: {{ tf_outputs.ecr_repository_urls.value }}"
